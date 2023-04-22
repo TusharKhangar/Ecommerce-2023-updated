@@ -1,15 +1,14 @@
 import { useState } from 'react';
 
 import FormInput from '../form-input/form-input.component';
+import CustomButton, { BUTTON_TYPE_CLASSES } from '../custom-button/custom-button.component';
 
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from '../../firebase/firebase-utils';
 
 import {SignInContainer, ButtonContainer} from './sign-in-form.styles';
-import CustomButton, { BUTTON_TYPE_CLASSES } from '../custom-button/custom-button.component';
 
 
 const defaultFormFields = {
@@ -34,10 +33,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
