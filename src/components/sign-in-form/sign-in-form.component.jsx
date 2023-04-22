@@ -8,8 +8,8 @@ import {
   signInAuthUserWithEmailAndPassword,
 } from '../../firebase/firebase-utils';
 
-import './sign-in-form.styles.scss';
-import CustomButton from '../custom-button/custom-button.component';
+import {SignInContainer, ButtonContainer} from './sign-in-form.styles';
+import CustomButton, { BUTTON_TYPE_CLASSES } from '../custom-button/custom-button.component';
 
 
 const defaultFormFields = {
@@ -27,14 +27,14 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
-     
+
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const {user} = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
@@ -60,7 +60,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className='sign-up-container'>
+    <SignInContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -81,14 +81,14 @@ const SignInForm = () => {
           name='password'
           value={password}
         />
-        <div className='buttons-container'>
+        <ButtonContainer>
           <CustomButton type='submit'>Sign In</CustomButton>
-          <CustomButton type='button' buttonType='google-sign-in' onClick={signInWithGoogle}>
+          <CustomButton type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>
             Google sign in
           </CustomButton>
-        </div>
+        </ButtonContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
