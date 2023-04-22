@@ -1,5 +1,5 @@
 import { Fragment, useContext } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet} from 'react-router-dom';
 
 import { UserContext } from '../../contexts/user.context';
 import { CartContext } from '../../contexts/cart.contexts';

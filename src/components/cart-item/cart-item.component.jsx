@@ -1,4 +1,4 @@
-import{CartItemContainer,ItemDetails,Name,Price} from './cart-item.style';
+import{CartItemContainer,ItemDetails,} from './cart-item.style';
 
 const CartItem  = ({cartItem}) => {
         const {imageUrl, price, name, quantity} = cartItem;
